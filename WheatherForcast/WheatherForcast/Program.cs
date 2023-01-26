@@ -73,27 +73,16 @@ while (true)
 
 //----------------------------------------------------------------------------
 
-string GetWind(int deg)
-{
-    switch (deg)
+string GetWind(int deg) =>
+    deg switch
     {
-        case int when deg > 345 && deg <= 360 || deg >= 0 && deg < 15:
-            return "северный";
-        case int when deg >= 15 && deg <= 75:
-            return "северо-восточный";
-        case int when deg > 75 && deg < 105:
-            return "восточный";
-        case int when deg >= 105 && deg <= 165:
-            return "юго-восточный";
-        case int when deg > 165 && deg < 195:
-            return "южный";
-        case int when deg >= 195 && deg <= 255:
-            return "юго-западный";
-        case int when deg > 255 && deg < 285:
-            return "западный";
-        case int when deg >= 285 && deg <= 345:
-            return "северо-западный";
-        default:
-            return "???";
-    }
-}
+        > 345 and <= 360 or >= 0 and < 15 => "северный",
+        >= 15 and <= 75 => "северо-восточный",
+        > 75 and < 105 => "восточный",
+        >= 105 and <= 165 => "юго-восточный",
+        > 165 and < 195 => "южный",
+        >= 195 and <= 255 => "юго-западный",
+        > 255 and < 285 => "западный",
+        >= 285 and <= 345 => "северо-западный",
+        _ => "???"
+    };
